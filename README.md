@@ -1,4 +1,4 @@
-Lika Mikhelashvili, Adriana Beltran Andrade
+Lika Mikhelashvili, Adriana Beltran Andrade, Vibha Gogu
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 

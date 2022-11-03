@@ -1,6 +1,6 @@
 ---
 output: github_document
-author: Lika Mikhelashvili, Adriana Beltran Andrade
+author: Lika Mikhelashvili, Adriana Beltran Andrade, Vibha Gogu
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
