@@ -1,5 +1,6 @@
 ---
 output: github_document
+author: Lika Mikhelashvili
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -35,7 +36,7 @@ You can install the development version of CodeGovern like so:
 This is a basic example which shows you how to solve a common problem:
 
 ```{r example}
-library(CodeGovern)
+#library(CodeGovern)
 ## basic example code
 ```
 
