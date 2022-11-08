@@ -23,6 +23,10 @@ knitr::opts_chunk$set(
 
 The goal of CodeGovern is to scrape and import datasets and metadata from government data websites like data.gov. 
 
+## Purpose
+
+## Target Audience
+
 ## Installation
 
 You can install the development version of CodeGovern like so:

@@ -12,7 +12,12 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 status](https://www.r-pkg.org/badges/version/CodeGovern)](https://CRAN.R-project.org/package=CodeGovern)
 <!-- badges: end -->
 
-The goal of CodeGovern is to …
+The goal of CodeGovern is to scrape and import datasets and metadata
+from government data websites like data.gov.
+
+## Purpose
+
+## Target Audience
 
 ## Installation
 
