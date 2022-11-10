@@ -15,6 +15,10 @@ library(rvest)
 library(stringr)
 library("htmltools")
 library("xml2")
+library(tidyverse)
+library(readr)
+#install.packages("rjson")
+library(rjson)
 ```
 
 ```{r}
@@ -38,12 +42,24 @@ get_gov_file <- function(name, type){
   #find the xml that is a link with data-format attribute of the type asked
   final <- xml_find_all(html, typeTogether)
   final <- html_attr(final, 'href')
-
-  download.file(url = final, destfile = str_c(name, ".", type), overwrite = T)
   
-  return(read_csv(str_c(name, ".", type)))
+  filename <- str_c(name, ".", type)
+  
+  download.file(url = final, destfile = filename, overwrite = T)
+  
+  if(type == "csv"){
+    return(read_csv(filename))
+  } else if(type == "json"){
+    #https://www.educative.io/answer\s/how-to-read-json-files-in-r
+    myData <- fromJSON(file = filename)
+    json_data_frame <- as.data.frame(myData)
+    return(json_data_frame)
+  }
   #return(final)
 }
+
+#Code to Deal with JSON Files
+#temp <- unlist(myData$data) %>% matrix(nrow = 1390, byrow=TRUE) %>% as.data.frame()
 ```
 
 
@@ -53,6 +69,9 @@ name <- "Lottery Powerball Winning Numbers Beginning 2010"
 my_data <- get_gov_file(name, "json")
 ```
 
+
+
+THIS FUNCTION BELOW DOES NOT WORK FOR ME
 ```{r}
 ## function downloads and automatically imports the file onto the R studio environment
 download_import_gov_file <- function(name, type){
@@ -77,9 +96,8 @@ download_import_gov_file <- function(name, type){
 
   download.file(url = final, destfile = str_c(name, ".", type), overwrite = T)
   
-  #return(read_csv(str_c(name, ".", type)))
   assign(str_c(name, ".", type), read_csv(str_c(name, ".", type)))
-
+  #return(read_csv(str_c(name, ".", type)))
   #return(final)
 }
 ```
@@ -87,6 +105,6 @@ download_import_gov_file <- function(name, type){
 ```{r}
 name <- "Lottery Powerball Winning Numbers Beginning 2010"
 # assignment happens like this:
-my_data <- download_import_gov_file(name, "json")
+my_data<- download_import_gov_file(name, "cvs")
 ```
 
