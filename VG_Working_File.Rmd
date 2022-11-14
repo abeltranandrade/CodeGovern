@@ -1,0 +1,60 @@
+---
+title: "Vibha Working File"
+author: "Vibha Gogu"
+date: "2022-11-10"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(rvest)
+library(stringr)
+library("htmltools")
+library("xml2")
+library(readr)
+```
+
+```{r}
+## function downloads and automatically imports the file onto the R studio environment
+download_import_gov_file <- function(name, type){
+  prefix <- "https://catalog.data.gov/dataset"
+  #Specific name needs to be lowercase and with dashes between words
+  specific <- tolower(name)
+  specific <- gsub(" ", "-", specific)
+  # paste the prefix and name together with a slash and no spaces
+  full_url <- paste0(prefix,"/", specific, sep = "")
+  #get HTML of the name given
+  html <- read_html(full_url)
+
+  # creating the XML command to find the data they are looking for
+  first <- ".//a[@data-format='"
+  last <- "']"
+  typeTogether <- paste0(first, type, last)
+
+  #https://stackoverflow.com/questions/45256789/get-value-from-xml-with-r-by-attribute
+  #find the xml that is a link with data-format attribute of the type asked
+  final <- xml_find_all(html, typeTogether)
+  final <- html_attr(final, 'href')
+  
+  if (endsWith(final,"accessType=DOWNLOAD") || ) {
+    download.file(url = final, destfile = str_c(name, ".", type), overwrite = T)
+  
+    #return(read_csv(str_c(name, ".", type)))
+    assign(str_c(name, ".", type), read_csv(str_c(name, ".", type)))
+  } else if (endsWith(final, ".csv" )){
+    final
+  }
+
+  
+  return(final)
+}
+```
+
+```{r}
+name <- "Lottery Powerball Winning Numbers Beginning 2010"
+# assignment happens like this:
+my_data <- download_import_gov_file(name, "csv")
+```
