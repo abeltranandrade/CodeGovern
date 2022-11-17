@@ -16,6 +16,22 @@ knitr::opts_chunk$set(
 
 # CodeGovern
 
+## Description
+
+### Purpose
+
+### Dependencies/Setup
+
+### Arguments
+
+### Result
+
+## Code
+
+## Examples
+
+## Testing
+
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![CRAN status](https://www.r-pkg.org/badges/version/CodeGovern)](https://CRAN.R-project.org/package=CodeGovern)
