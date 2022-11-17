@@ -16,19 +16,51 @@ knitr::opts_chunk$set(
 
 # CodeGovern
 
-## Description
-
 ### Purpose
+Code Govern is a package used to scrape and imports and downloads datasets and metadata from the website Data.gov. This website is the federal government's open data site, and has over 298,424 datasets available to download in various export types (i.e. .csv, .xml, .json). Using CodeGovern functions, the data can be easily downloaded onto your computer, or for .csv files, return the data directly in RStudio.
+
+## Target audience
+This package is intended for users who want to work with open government data without having to repetitively download data and work with the Data.gov interface. 
+
+##Installation 
 
 ### Dependencies/Setup
+Need to load the following libraries:
+
+```{r}
+library(rvest)
+library(stringr)
+library("htmltools")
+library("xml2")
+library(tidyverse)
+library(readr)
+#install.packages("rjson")
+library(rjson)
+```
 
 ### Arguments
 
+`name` is the name of the dataset you want to download. The name should be a string and should be worded exactly as it appears on the data.gov website. Example, "Lottery Powerball Winning Numbers Beginning 2010"
+
+`type`: type of the data set. Must be a string. For example, "csv", "json", "xml", etc. 
+
+
 ### Result
+The function returns a downloaded data file that the user can assign to an object and import into the RStudio environment. 
+
 
 ## Code
 
 ## Examples
+
+```{r test examples}
+name <- "Electric Vehicle Population Data"
+# assignment happens like this:
+my_data <- get_gov_file(name, "json")
+name2 <- "Lottery Powerball Winning Numbers Beginning 2010"
+# assignment happens like this:
+my_data2 <- get_gov_file(name2, "xml")
+```
 
 ## Testing
 
@@ -56,18 +88,3 @@ This is a basic example which shows you how to solve a common problem:
 ## basic example code
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
-
-```{r cars}
-summary(cars)
-```
-
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this. You could also use GitHub Actions to re-render `README.Rmd` every time you push. An example workflow can be found here: <https://github.com/r-lib/actions/tree/v1/examples>.
-
-You can also embed plots, for example:
-
-```{r pressure, echo = FALSE}
-plot(pressure)
-```
-
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.
