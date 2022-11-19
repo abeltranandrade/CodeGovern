@@ -23,6 +23,13 @@ get_gov_file <- function(name, type){
   specific <- gsub(" ", "-", specific)
   # paste the prefix and name together with a slash and no spaces
   full_url <- paste0(prefix,"/", specific, sep = "")
+  #Ensure that dataset requested exists
+  tryCatch(
+    expr = {html <- read_html(full_url)},
+    error = function(e){          # Specifying error message
+      message("There was an error. The dataset was not found")
+    }
+  )
   #get HTML of the name given
   html <- read_html(full_url)
 
