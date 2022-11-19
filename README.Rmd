@@ -147,8 +147,9 @@ You can install the development version of CodeGovern like so:
 This is a basic example which shows you how to solve a common problem:
 
 ```{r example}
-#library(CodeGovern)
-## basic example code
+library(CodeGovern)
+my_data1 <- get_gov_file("Electric Vehicle Population Data", "json")
+my_data2 <-get_gov_file("Lottery Powerball Winning Numbers Beginning 2010", "csv")
 ```
 
 ## Phase III Package
