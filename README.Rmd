@@ -116,10 +116,9 @@ get_gov_file <- function(name, type){
 
 ```{r test examples}
 name <- "Electric Vehicle Population Data"
-# assignment happens like this:
 my_data <- get_gov_file(name, "json")
+
 name2 <- "Lottery Powerball Winning Numbers Beginning 2010"
-# assignment happens like this:
 my_data2 <- get_gov_file(name2, "xml")
 ```
 
