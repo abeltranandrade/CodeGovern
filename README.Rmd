@@ -17,7 +17,15 @@ knitr::opts_chunk$set(
 # CodeGovern
 
 ### Purpose
-Code Govern is a package used to scrape and imports and downloads datasets and metadata from the website Data.gov. This website is the federal government's open data site, and has over 298,424 datasets available to download in various export types (i.e. .csv, .xml, .json). Using CodeGovern functions, the data can be easily downloaded onto your computer, or for .csv files, return the data directly in RStudio.
+Code Govern is a package used to scrape and imports and downloads datasets and metadata from the website Data.gov. This website is the federal government's open data site, and has over 298,424 datasets available to download in various export types (i.e. .csv, .xml, .json). Using CodeGovern functions, the data can be easily downloaded onto your computer, or for .csv files, return the data directly in RStudio. The function currently supports onl three file types: CSV, JSON, and XML.
+
+- CSV: the function will download the file locally and return a data frame.
+
+- JSON: the function will download the file locally and return the raw JSON file.
+
+- XML: the function will download the file locally.
+
+If the user enters any other file types, the function will put an error message and redirect the user to the website of the data.
 
 ## Target audience
 This package is intended for users who want to work with open government data without having to repetitively download data and work with the Data.gov interface. 
