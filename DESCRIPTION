@@ -2,11 +2,10 @@ Package: CodeGovern
 Title: CodeGovt
 Version: 0.0.0.9000
 Authors@R: c(
-    person("Adriana", "Beltran Andrade", email = "abeltranandrade@smith.edu", role = c("aut", "cre"))
-    person("Lika", "Mikhelashvili", email = "lmikhelashvili@smith.edu", role = c("aut"))
+    person("Adriana", "Beltran Andrade", email = "abeltranandrade@smith.edu", role = c("aut", "cre")),
+    person("Lika", "Mikhelashvili", email = "lmikhelashvili@smith.edu", role = c("aut")),
     person("Vibha", "Gogu", email = "vgogu@smith.edu", role = c("aut"))
     )
-Maintainer: 'Lika Mikhelashvili <lmikhelashvili@smith.edu>'
 Description: Scrape <https://www.data.gov> website and download data
 License: MIT + file LICENSE
 Suggests: 
