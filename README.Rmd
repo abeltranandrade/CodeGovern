@@ -153,3 +153,4 @@ This is a basic example which shows you how to solve a common problem:
 
 ## Phase III Package
 
+In Phase III we will be working on the same package as in Phase II. Now, we have `get_gov_file` that downloads the data file. In the next phase, we will create a function that gives a catalog of the data sets on the [data.gov](http://www.data.gov) website. We will also work on a function that gives detailed information on the user's data set of choice, e.g., the date published. 
