@@ -24,13 +24,22 @@ This package is intended for users who want to work with open government data wi
 those with domain knowledge who want to start working with data but want a more seamless experience 
 given their limited experience.
 
+## Testing
 
-##Installation 
+<!-- badges: start -->
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![CRAN status](https://www.r-pkg.org/badges/version/CodeGovern)](https://CRAN.R-project.org/package=CodeGovern)
+<!-- badges: end -->
 
-Install our package by using devtools::install_github() as shown below. You may also clone the repository and install it through Rstudio build panel. 
-```{r}
+
+## Installation
+
+You can install the development version of CodeGovern like so:
+
+``` r
 devtools::install_github("abeltranandrade/CodeGovern")
 ```
+Install our package by using devtools::install_github() as shown below. You may also clone the repository and install it through Rstudio build panel. 
 
 
 ### Dependencies/Setup
@@ -131,26 +140,6 @@ name2 <- "Lottery Powerball Winning Numbers Beginning 2010"
 my_data2 <- get_gov_file(name2, "xml")
 ```
 
-## Testing
-
-<!-- badges: start -->
-[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-[![CRAN status](https://www.r-pkg.org/badges/version/CodeGovern)](https://CRAN.R-project.org/package=CodeGovern)
-<!-- badges: end -->
-
-The goal of CodeGovern is to scrape and import datasets and metadata from government data websites like data.gov. 
-
-## Installation
-
-You can install the development version of CodeGovern like so:
-
-``` r
-# FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
-```
-
-## Example
-
-This is a basic example which shows you how to solve a common problem:
 
 ```{r example}
 library(CodeGovern)
