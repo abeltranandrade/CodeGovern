@@ -9,9 +9,11 @@ library(rjson)
 library(XML)
 library(methods)
 
-#' CodeGovt
+#' Download/Import CSV, JSON, XML files.
 #'
-#' Scrape data.gov website and automatically download and import data
+#' Scrape data.gov website and automatically download data.  For CSV file type, the function will download the file locally and return a data frame.
+#' For JSON the function will download the file locally and return the raw JSON file. For XML, the function will download the file locally.
+#'
 #' @param name name of the data set
 #' @param type data file type (csv, json, xml)
 #'
