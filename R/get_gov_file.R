@@ -9,13 +9,18 @@ library(rjson)
 library(XML)
 library(methods)
 
-#' Title
+#' CodeGovt
 #'
-#' @return
+#' Scrape data.gov website and automatically download and import data
+#' @param name name of the data set
+#' @param type data file type (csv, json, xml)
+#'
+#' @return Locally download the data file and import it to the RStudio environment
 #' @export
 #'
 #' @examples
-#'
+#' get_gov_file("Electric Vehicle Population Data", "json")
+#' get_gov_file("Lottery Powerball Winning Numbers Beginning 2010", "csv")
 get_gov_file <- function(name, type){
   prefix <- "https://catalog.data.gov/dataset"
   #Specific name needs to be lowercase and with dashes between words
