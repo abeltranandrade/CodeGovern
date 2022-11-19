@@ -19,6 +19,8 @@ library(tidyverse)
 library(readr)
 #install.packages("rjson")
 library(rjson)
+library(XML)
+library(methods)
 ```
 
 ```{r}
@@ -45,66 +47,53 @@ get_gov_file <- function(name, type){
   
   filename <- str_c(name, ".", type)
   
-  download.file(url = final, destfile = filename, overwrite = T)
-  
+  # CSV file
   if(type == "csv"){
+    download.file(url = final, destfile = filename, overwrite = T)
     return(read_csv(filename))
+  # JSON file
   } else if(type == "json"){
+    file_downloaded <- download.file(url = final, destfile = filename, overwrite = T)
     #https://www.educative.io/answer\s/how-to-read-json-files-in-r
     myData <- fromJSON(file = filename)
-    json_data_frame <- as.data.frame(myData)
-    return(json_data_frame)
+    #temp <- unlist(myData$data) %>% matrix(nrow = length(myData$data), byrow=TRUE) %>% as.data.frame()
+    return(myData) #returns the Json file raw
   }
-  #return(final)
+    # XML file: function does not return anything, just donwloads the function locally
+    else if(type =="xml"){
+    download.file(url = final, destfile = filename, overwrite = T)
+    #data <- xmlParse(file = filename)
+    #dataframe <- xmlToDataFrame("Lottery Powerball Winning Numbers Beginning 2010.xml")
+    } else {
+    print("File type not supported currently you entered the type incorrectly. Redirecting to the website...")
+    browseURL(full_url)
+      }
 }
+```
 
-#Code to Deal with JSON Files
-#temp <- unlist(myData$data) %>% matrix(nrow = 1390, byrow=TRUE) %>% as.data.frame()
+```{r xml download}
+library(XML)
+library(methods)
+#https://www.geeksforgeeks.org/working-with-xml-files-in-r-programming/
+#result <- download.file(url = "", destfile = "test_xml_file.xml")
+result <- xmlParse(file = "test_xml_file.xml")
+print(result)
+#xmldataframe <- xmlToDataFrame(result)
+data <- xmlParse(file = "Lottery Powerball Winning Numbers Beginning 2010.xml")
+ 
+print(data)
+
+dataframe <- xmlToDataFrame("Lottery Powerball Winning Numbers Beginning 2010.xml")
+print(dataframe)
+#issue: the data is all in one row
 ```
 
 
-```{r}
-name <- "Lottery Powerball Winning Numbers Beginning 2010"
+```{r test examples}
+name <- "Electric Vehicle Population Data"
 # assignment happens like this:
 my_data <- get_gov_file(name, "json")
-```
-
-
-
-THIS FUNCTION BELOW DOES NOT WORK FOR ME
-```{r}
-## function downloads and automatically imports the file onto the R studio environment
-download_import_gov_file <- function(name, type){
-  prefix <- "https://catalog.data.gov/dataset"
-  #Specific name needs to be lowercase and with dashes between words
-  specific <- tolower(name)
-  specific <- gsub(" ", "-", specific)
-  # paste the prefix and name together with a slash and no spaces
-  full_url <- paste0(prefix,"/", specific, sep = "")
-  #get HTML of the name given
-  html <- read_html(full_url)
-
-  # creating the XML command to find the data they are looking for
-  first <- ".//a[@data-format='"
-  last <- "']"
-  typeTogether <- paste0(first, type, last)
-
-  #https://stackoverflow.com/questions/45256789/get-value-from-xml-with-r-by-attribute
-  #find the xml that is a link with data-format attribute of the type asked
-  final <- xml_find_all(html, typeTogether)
-  final <- html_attr(final, 'href')
-
-  download.file(url = final, destfile = str_c(name, ".", type), overwrite = T)
-  
-  assign(str_c(name, ".", type), read_csv(str_c(name, ".", type)))
-  #return(read_csv(str_c(name, ".", type)))
-  #return(final)
-}
-```
-
-```{r}
-name <- "Lottery Powerball Winning Numbers Beginning 2010"
+name2 <- "Lottery Powerball Winning Numbers Beginning 2010"
 # assignment happens like this:
-my_data<- download_import_gov_file(name, "cvs")
+my_data2 <- get_gov_file(name2, "xml")
 ```
-
