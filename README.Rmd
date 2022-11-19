@@ -27,6 +27,12 @@ given their limited experience.
 
 ##Installation 
 
+Install our package by using devtools::install_github() as shown below. You may also clone the repository and install it through Rstudio build panel. 
+```{r}
+devtools::install_github("abeltranandrade/CodeGovern")
+```
+
+
 ### Dependencies/Setup
 Need to load the following libraries:
 
