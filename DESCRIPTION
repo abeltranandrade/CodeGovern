@@ -1,10 +1,11 @@
 Package: CodeGovern
-Title: What the Package Does (One Line, Title Case)
+Title: CodeGovt
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+    person("Adriana", "Beltran Andrade")
+    person("Vibha", "Gogu")
+    person("Lika", "Mikhelashvili")
+Description: Scrape data.gov website and download data
 License: MIT + file LICENSE
 Suggests: 
     testthat (>= 3.0.0)
