@@ -11,7 +11,7 @@ library(methods)
 
 #' Download/Import CSV, JSON, XML files.
 #'
-#' Scrape data.gov website and automatically download data.  For CSV file type, the function will download the file locally and return a data frame.
+#' Scrape <http://www.data.gov> website and automatically download data.  For CSV file type, the function will download the file locally and return a data frame.
 #' For JSON the function will download the file locally and return the raw JSON file. For XML, the function will download the file locally.
 #'
 #' @param name name of the data set

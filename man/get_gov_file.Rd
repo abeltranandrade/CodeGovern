@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_gov_file.R
 \name{get_gov_file}
 \alias{get_gov_file}
-\title{CodeGovt}
+\title{Download/Import CSV, JSON, XML files.}
 \usage{
 get_gov_file(name, type)
 }
@@ -15,7 +15,7 @@ get_gov_file(name, type)
 Locally download the data file and import it to the RStudio environment
 }
 \description{
-Scrape data.gov website and automatically download data.  For CSV file type, the function will download the file locally and return a data frame.
+Scrape \url{http://www.data.gov} website and automatically download data.  For CSV file type, the function will download the file locally and return a data frame.
 For JSON the function will download the file locally and return the raw JSON file. For XML, the function will download the file locally.
 }
 \examples{
