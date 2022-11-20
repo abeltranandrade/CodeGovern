@@ -10,5 +10,5 @@ require(XML)
 my_Data <- get_gov_file("Lottery Powerball Winning Numbers Beginning 2010", "csv")
 
 test_that("csv_downloads", {
-  expect_equal(my_Data, read_csv("Lottery Powerball Winning Numbers Beginning 2010.csv"))
+  expect_equal(my_Data, read_csv("LotteryPowerballWinningNumbersBeginning2010.csv"))
 })

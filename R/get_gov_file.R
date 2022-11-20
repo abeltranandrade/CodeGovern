@@ -36,6 +36,7 @@ library(methods)
 #' @import rjson
 #' @import methods
 #' @import XML
+#' @importFrom utils "browseURL" "download.file"
 get_gov_file <- function(name, type){
   prefix <- "https://catalog.data.gov/dataset"
   #Specific name needs to be lowercase and with dashes between words
@@ -63,6 +64,7 @@ get_gov_file <- function(name, type){
   final <- xml_find_all(html, typeTogether)
   final <- html_attr(final, 'href')
 
+  name <- gsub(" ", "", name)
   filename <- str_c(name, ".", type)
 
   # CSV file

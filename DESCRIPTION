@@ -6,7 +6,7 @@ Authors@R: c(
     person("Lika", "Mikhelashvili", email = "lmikhelashvili@smith.edu", role = c("aut")),
     person("Vibha", "Gogu", email = "vgogu@smith.edu", role = c("aut"))
     )
-Description: Scrape <https://www.data.gov> website and download data
+Description: Scrape <https://www.data.gov> website and download data.
 License: MIT + file LICENSE
 Suggests: 
     testthat (>= 3.0.0)
@@ -18,7 +18,9 @@ Depends:
     R (>= 2.10)
 LazyData: true
 Imports: 
+  utils,
   rvest, 
+  dplyr,
   stringr, 
   htmltools,
   xml2, 
