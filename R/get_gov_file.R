@@ -21,8 +21,21 @@ library(methods)
 #' @export
 #'
 #' @examples
+#'
+#' library(CodeGovern)
+#'
 #' get_gov_file("Electric Vehicle Population Data", "json")
 #' get_gov_file("Lottery Powerball Winning Numbers Beginning 2010", "csv")
+#' @import dplyr
+#' @import xml2
+#' @import rvest
+#' @import stringr
+#' @import htmltools
+#' @import tidyverse
+#' @import readr
+#' @import rjson
+#' @import methods
+#' @import XML
 get_gov_file <- function(name, type){
   prefix <- "https://catalog.data.gov/dataset"
   #Specific name needs to be lowercase and with dashes between words

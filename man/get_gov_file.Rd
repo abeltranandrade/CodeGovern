@@ -19,6 +19,9 @@ Scrape \url{http://www.data.gov} website and automatically download data.  For C
 For JSON the function will download the file locally and return the raw JSON file. For XML, the function will download the file locally.
 }
 \examples{
+
+library(CodeGovern)
+
 get_gov_file("Electric Vehicle Population Data", "json")
 get_gov_file("Lottery Powerball Winning Numbers Beginning 2010", "csv")
 }
