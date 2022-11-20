@@ -3,7 +3,7 @@ library(stringr)
 library("htmltools")
 library("xml2")
 library(tidyverse)
-library(readr)
+library(readr, include.only = 'read_csv')
 #install.packages("rjson")
 library(rjson)
 library(XML)
@@ -33,11 +33,13 @@ library(methods)
 #' @import stringr
 #' @import htmltools
 #' @import tidyverse
-#' @import readr
 #' @import rjson
 #' @import methods
 #' @import XML
 #' @importFrom utils "browseURL" "download.file"
+#' @importFrom readr "read_csv"
+
+
 get_gov_file <- function(name, type, import = TRUE){
   prefix <- "https://catalog.data.gov/dataset"
   #Specific name needs to be lowercase and with dashes between words
