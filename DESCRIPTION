@@ -17,3 +17,14 @@ RoxygenNote: 7.2.1
 Depends: 
     R (>= 2.10)
 LazyData: true
+Imports: 
+  rvest, 
+  stringr, 
+  htmltools,
+  xml2, 
+  tidyverse, 
+  readr, 
+  rjson,
+  XML, 
+  methods
+
