@@ -4,6 +4,26 @@ Lika Mikhelashvili, Adriana Beltran Andrade, Vibha Gogu
 
 # CodeGovern
 
+### Purpose
+
+Code Govern is a package used to scrape and imports and downloads
+datasets and metadata from the website Data.gov. This website is the
+federal government’s open data site, and has over 298,424 datasets
+available to download in various export types (i.e. .csv, .xml, .json).
+Using CodeGovern functions, the data can be easily downloaded onto your
+computer, or for .csv files, return the data directly in RStudio. The
+function currently supports only three file types: CSV, JSON, and XML.
+
+## Target audience
+
+This package is intended for users who want to work with open government
+data without having to repetitively download data and work with the
+Data.gov interface. This package is also useful for those with domain
+knowledge who want to start working with data but want a more seamless
+experience given their limited experience.
+
+## Testing
+
 <!-- badges: start -->
 
 [![Lifecycle:
@@ -12,53 +32,78 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 status](https://www.r-pkg.org/badges/version/CodeGovern)](https://CRAN.R-project.org/package=CodeGovern)
 <!-- badges: end -->
 
-The goal of CodeGovern is to scrape and import datasets and metadata
-from government data websites like data.gov.
-
-## Purpose
-
-## Target Audience
-
 ## Installation
 
 You can install the development version of CodeGovern like so:
 
 ``` r
-# FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
+devtools::install_github("abeltranandrade/CodeGovern")
 ```
 
-## Example
+Install our package by using devtools::install_github() as shown below.
+You may also clone the repository and install it through Rstudio build
+panel.
 
-This is a basic example which shows you how to solve a common problem:
+### Dependencies/Setup
+
+Need to load the following libraries:
 
 ``` r
-#library(CodeGovern)
-## basic example code
+library(rvest)
+library(stringr)
+library("htmltools")
+library("xml2")
+library(tidyverse)
+library(readr)
+library(rjson)
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
+### Arguments
+
+`name` is the name of the dataset you want to download. The name should
+be a string and should be worded exactly as it appears on the data.gov
+website. Example, “Lottery Powerball Winning Numbers Beginning 2010”
+
+`type`: type of the data set. Must be a string. For example, “csv”,
+“json”, “xml”, etc.
+
+`import`: Boolean that decides if file should be imported locally. By
+default it is TRUE and will import locally. Used mostly for internal
+processes.
+
+### Result
+
+The function returns a downloaded data file that the user can assign to
+an object and import into the RStudio environment. The function
+currently supports only three file types: CSV, JSON, and XML.
+
+-   CSV: the function will download the file locally and return a data
+    frame.
+
+-   JSON: the function will download the file locally and return the raw
+    JSON file.
+
+-   XML: the function will download the file locally.
+
+If the user enters any other file types, the function will put an error
+message and redirect the user to the website of the data.
+
+## Examples
 
 ``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
+library(CodeGovern)
+my_data1 <- get_gov_file("Electric Vehicle Population Data", "json")
+my_data2 <-get_gov_file("Lottery Powerball Winning Numbers Beginning 2010", "csv")
 ```
 
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this. You could also
-use GitHub Actions to re-render `README.Rmd` every time you push. An
-example workflow can be found here:
-<https://github.com/r-lib/actions/tree/v1/examples>.
+## Phase III Package
 
-You can also embed plots, for example:
-
-<img src="man/figures/README-pressure-1.png" width="100%" />
-
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub and CRAN.
+In Phase III we will be working on the same package as in Phase II. Now,
+we have `get_gov_file` that downloads the data file. In the next phase,
+we would want to expand get_gov_file or create a sister function that is
+able to download multiple files in one function call through a vector
+argument. We will create a function that gives a catalog of the data
+sets on the [data.gov](http://www.data.gov) website through our function
+that will return the names. We will also work on a function that gives
+detailed information on the user’s data set of choice, e.g., the date
+published.

@@ -1,10 +1,12 @@
 Package: CodeGovern
-Title: What the Package Does (One Line, Title Case)
+Title: CodeGovt
 Version: 0.0.0.9000
-Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+Authors@R: c(
+    person("Adriana", "Beltran Andrade", email = "abeltranandrade@smith.edu", role = c("aut", "cre")),
+    person("Lika", "Mikhelashvili", email = "lmikhelashvili@smith.edu", role = c("aut")),
+    person("Vibha", "Gogu", email = "vgogu@smith.edu", role = c("aut"))
+    )
+Description: Scrape <https://www.data.gov> website and download data.
 License: MIT + file LICENSE
 Suggests: 
     testthat (>= 3.0.0)
@@ -12,3 +14,19 @@ Config/testthat/edition: 3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.1
+Depends: 
+    R (>= 2.10)
+LazyData: true
+Imports: 
+  utils,
+  rvest, 
+  dplyr,
+  stringr, 
+  htmltools,
+  xml2, 
+  tidyverse, 
+  readr, 
+  rjson,
+  XML, 
+  methods
+
