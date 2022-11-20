@@ -32,6 +32,10 @@ given their limited experience.
 <!-- badges: end -->
 
 
+## Purpose
+
+## Target Audience
+
 ## Installation
 
 You can install the development version of CodeGovern like so:
