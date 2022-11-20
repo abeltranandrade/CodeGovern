@@ -67,6 +67,10 @@ website. Example, “Lottery Powerball Winning Numbers Beginning 2010”
 `type`: type of the data set. Must be a string. For example, “csv”,
 “json”, “xml”, etc.
 
+`import`: Boolean that decides if file should be imported locally. By
+default it is TRUE and will import locally. Used mostly for internal
+processes.
+
 ### Result
 
 The function returns a downloaded data file that the user can assign to
@@ -96,7 +100,10 @@ my_data2 <-get_gov_file("Lottery Powerball Winning Numbers Beginning 2010", "csv
 
 In Phase III we will be working on the same package as in Phase II. Now,
 we have `get_gov_file` that downloads the data file. In the next phase,
-we will create a function that gives a catalog of the data sets on the
-[data.gov](http://www.data.gov) website. We will also work on a function
-that gives detailed information on the user’s data set of choice, e.g.,
-the date published.
+we would want to expand get_gov_file or create a sister function that is
+able to download multiple files in one function call through a vector
+argument. We will create a function that gives a catalog of the data
+sets on the [data.gov](http://www.data.gov) website through our function
+that will return the names. We will also work on a function that gives
+detailed information on the user’s data set of choice, e.g., the date
+published.

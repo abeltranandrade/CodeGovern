@@ -25,6 +25,7 @@ library(methods)
 #'
 #' library(CodeGovern)
 #'
+#' #if you want file to locally import, delete import parameter, by default import = TRUE
 #' get_gov_file("Electric Vehicle Population Data", "json", import = FALSE )
 #' get_gov_file("Lottery Powerball Winning Numbers Beginning 2010", "csv", import = FALSE)
 #' @import dplyr
