@@ -73,7 +73,8 @@ get_gov_file <- function(name, type){
         browseURL(full_url)
       }
     },
-    warning = function(w){        # Specifying warning message
+    warning = function(w){  # Specifying warning message
+      #message("Redirecting")
       message(paste0("Redirecting to this page: ", final))
       browseURL(final)
     }
