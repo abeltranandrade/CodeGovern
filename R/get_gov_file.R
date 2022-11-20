@@ -16,6 +16,7 @@ library(methods)
 #'
 #' @param name name of the data set
 #' @param type data file type (csv, json, xml)
+#' @param import Decides if we locally download the file. By default import is TRUE.
 #'
 #' @return Locally download the data file and import it to the RStudio environment
 #' @export
@@ -24,8 +25,8 @@ library(methods)
 #'
 #' library(CodeGovern)
 #'
-#' get_gov_file("Electric Vehicle Population Data", "json")
-#' get_gov_file("Lottery Powerball Winning Numbers Beginning 2010", "csv")
+#' get_gov_file("Electric Vehicle Population Data", "json", import = FALSE )
+#' get_gov_file("Lottery Powerball Winning Numbers Beginning 2010", "csv", import = FALSE)
 #' @import dplyr
 #' @import xml2
 #' @import rvest
@@ -37,7 +38,7 @@ library(methods)
 #' @import methods
 #' @import XML
 #' @importFrom utils "browseURL" "download.file"
-get_gov_file <- function(name, type){
+get_gov_file <- function(name, type, import = TRUE){
   prefix <- "https://catalog.data.gov/dataset"
   #Specific name needs to be lowercase and with dashes between words
   specific <- tolower(name)
@@ -67,31 +68,34 @@ get_gov_file <- function(name, type){
   name <- gsub(" ", "", name)
   filename <- str_c(name, ".", type)
 
-  # CSV file
-  tryCatch(
-    expr = {
-      if(type == "csv"){
-        download.file(url = final, destfile = filename, overwrite = T)
-        return(read_csv(filename))
-        # JSON file
-      } else if(type == "json"){
-        file_downloaded <- download.file(url = final, destfile = filename, overwrite = T)
-        #https://www.educative.io/answer\s/how-to-read-json-files-in-r
-        myData <- fromJSON(file = filename)
-        return(myData) #returns the Json file raw
+  if(import){
+    # CSV file
+    tryCatch(
+      expr = {
+        if(type == "csv"){
+          download.file(url = final, destfile = filename, overwrite = T)
+          return(read_csv(filename))
+          # JSON file
+        } else if(type == "json"){
+          file_downloaded <- download.file(url = final, destfile = filename, overwrite = T)
+          #https://www.educative.io/answer\s/how-to-read-json-files-in-r
+          myData <- fromJSON(file = filename)
+          return(myData) #returns the Json file raw
+        }
+        # XML file: function does not return anything, just donwloads the function locally
+        else if(type =="xml"){
+          download.file(url = final, destfile = filename, overwrite = T)
+        } else {
+          print("File type not supported currently you entered the type incorrectly. Redirecting to the website...")
+          browseURL(full_url)
+        }
+      },
+      warning = function(w){  # Specifying warning message
+        #message("Redirecting")
+        message(paste0("Redirecting to this page: ", final))
+        browseURL(final)
       }
-      # XML file: function does not return anything, just donwloads the function locally
-      else if(type =="xml"){
-        download.file(url = final, destfile = filename, overwrite = T)
-      } else {
-        print("File type not supported currently you entered the type incorrectly. Redirecting to the website...")
-        browseURL(full_url)
-      }
-    },
-    warning = function(w){  # Specifying warning message
-      #message("Redirecting")
-      message(paste0("Redirecting to this page: ", final))
-      browseURL(final)
-    }
-  )
+    )
+  }
+  return(1)
 }

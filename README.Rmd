@@ -76,10 +76,10 @@ If the user enters any other file types, the function will put an error message 
 
 ## Examples
 
-```r
+```{r eval = FALSE}
 library(CodeGovern)
-my_data1 <- get_gov_file("Electric Vehicle Population Data", "json")
-my_data2 <-get_gov_file("Lottery Powerball Winning Numbers Beginning 2010", "csv")
+my_data1 <- get_gov_file("Electric Vehicle Population Data", "json", import = FALSE)
+my_data2 <-get_gov_file("Lottery Powerball Winning Numbers Beginning 2010", "csv", import = FALSE)
 ```
 
 ## Phase III Package

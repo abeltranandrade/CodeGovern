@@ -4,12 +4,14 @@
 \alias{get_gov_file}
 \title{Download/Import CSV, JSON, XML files.}
 \usage{
-get_gov_file(name, type)
+get_gov_file(name, type, import = TRUE)
 }
 \arguments{
 \item{name}{name of the data set}
 
 \item{type}{data file type (csv, json, xml)}
+
+\item{import}{Decides if we locally download the file. By default import is TRUE.}
 }
 \value{
 Locally download the data file and import it to the RStudio environment
@@ -22,6 +24,6 @@ For JSON the function will download the file locally and return the raw JSON fil
 
 library(CodeGovern)
 
-get_gov_file("Electric Vehicle Population Data", "json")
-get_gov_file("Lottery Powerball Winning Numbers Beginning 2010", "csv")
+get_gov_file("Electric Vehicle Population Data", "json", import = FALSE )
+get_gov_file("Lottery Powerball Winning Numbers Beginning 2010", "csv", import = FALSE)
 }
