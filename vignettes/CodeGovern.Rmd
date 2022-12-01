@@ -1,0 +1,22 @@
+---
+title: "CodeGovern"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{CodeGovern}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(CodeGovern)
+```
+
+This is my vignette knitted
+ 
