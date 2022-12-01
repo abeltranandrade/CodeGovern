@@ -1,0 +1,40 @@
+---
+title: "alert notification"
+author: "Vibha Gogu"
+date: "2022-11-29"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r}
+name <- "Demographic Statistics By Zip Code"
+```
+
+```{r}
+prefix <- "https://catalog.data.gov/dataset"
+  #Specific name needs to be lowercase and with dashes between words
+  specific <- tolower(name)
+  specific <- gsub(" ", "-", specific)
+  # paste the prefix and name together with a slash and no spaces
+  full_url <- paste0(prefix,"/", specific, sep = "")
+  #Ensure that dataset requested exists
+  tryCatch(
+    expr = {html <- read_html(full_url)},
+    error = function(e){          # Specifying error message
+      message("There was an error. The dataset was not found")
+    }
+  )
+  
+  #alert_html <- "alert-info non-federal"
+  alert_html <- ".//div[@class='alert-info non-federal']"
+  final <- xml_find_all(html, alert_html)
+  final <- html_attr(final, 'href')
+  
+  html %>% 
+  html_nodes("#div30") %>% 
+  html_text(trim=T)
+  
+ 
+```
