@@ -9,7 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 ```{r}
-name <- "Demographic Statistics By Zip Code"
+name <- "Electric Vehicle Population Data"
 ```
 
 ```{r}
@@ -27,14 +27,14 @@ prefix <- "https://catalog.data.gov/dataset"
     }
   )
   
-  #alert_html <- "alert-info non-federal"
-  alert_html <- ".//div[@class='alert-info non-federal']"
-  final <- xml_find_all(html, alert_html)
-  final <- html_attr(final, 'href')
+  alert <- html%>%
+    html_elements(".non-federal")
   
-  html %>% 
-  html_nodes("#div30") %>% 
-  html_text(trim=T)
+  if(length(alert)==0) {
+    print("blah")
+  }else{
+    print("blahblah")
+  }
   
  
 ```
