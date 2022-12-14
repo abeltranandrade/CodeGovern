@@ -2,27 +2,27 @@ Lika Mikhelashvili, Adriana Beltran Andrade, Vibha Gogu
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# CodeGovern
+# CodeGovern <img src="data-raw/hex_codegovern_US_colors.png" align="right" height=140/>
 
 ### Purpose
 
-Code Govern is a package used to scrape and imports and downloads
-datasets and metadata from the website Data.gov. This website is the
-federal government’s open data site, and has over 298,424 datasets
-available to download in various export types (i.e. .csv, .xml, .json).
-Using CodeGovern functions, the data can be easily downloaded onto your
-computer, or for .csv files, return the data directly in RStudio. The
-function currently supports only three file types: CSV, JSON, and XML.
+Code Govern is a package used to scrape, import, and download datasets
+and metadata from the website [Data.gov](https://data.gov/). This
+website is the federal government’s open data site, and has over 298,424
+datasets available to download in various export types (i.e., .csv,
+.xml, .json). Using **CodeGovern** functions, the data can be easily
+downloaded onto your computer, or for .csv files, return the data
+directly in RStudio. Our functions currently support CSV, JSON, and XML
+file types.
 
-## Target audience
+### Target audience
 
-This package is intended for users who want to work with open government
-data without having to repetitively download data and work with the
-Data.gov interface. This package is also useful for those with domain
-knowledge who want to start working with data but want a more seamless
-experience given their limited experience.
-
-## Testing
+This package is intended for users who want to work with the open
+government data without having to repetitively download data and prefer
+not to work with the [Data.gov](https://data.gov/) interface. This
+package is also useful for those with domain knowledge who want to start
+working with data but want a more seamless experience given their
+limited experience.
 
 <!-- badges: start -->
 
@@ -33,21 +33,73 @@ status](https://www.r-pkg.org/badges/version/CodeGovern)](https://CRAN.R-project
 [![R-CMD-check](https://github.com/abeltranandrade/CodeGovern/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/abeltranandrade/CodeGovern/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-## Purpose
+### Installation
 
-## Target Audience
-
-## Installation
-
-You can install the development version of CodeGovern like so:
+You can install the development version of **CodeGovern** as follows:
 
 ``` r
 devtools::install_github("abeltranandrade/CodeGovern")
 ```
 
-Install our package by using devtools::install_github() as shown below.
-You may also clone the repository and install it through Rstudio build
-panel.
+You can also clone the repository and install it through the Rstudio
+build panel.
+
+### Functions Included
+
+The following functions allow the user to scrape and download data,
+**explore available datasets, and view data documentation (NEED TO
+CLARIFY THIS)**.
+
+-   `get_gov_file` downloads and imports a single dataset of type CVS,
+    JSON, and XML
+
+-   `get_many_gov_files` downloads multiple datasets of type CSV and
+    returns a list of data frames
+
+-   `name_crawler`
+
+-   
+
+### Usage
+
+These are a few examples of how to use the package to scrape data from
+[Data.gov](https://data.gov/).
+
+Load `CodeGovern` R package:
+
+``` r
+library(CodeGovern)
+```
+
+**DO WE NEED TO HAVE THE import=TRUE here?**
+
+``` r
+#download the data set locally
+get_gov_file("Electric Vehicle Population Data", "json") 
+
+#download the data set locally and import it to the environment
+my_data2 <-get_gov_file("Lottery Powerball Winning Numbers Beginning 2010", "csv") 
+```
+
+``` r
+#Create a list of dataset names
+my_names <- c("FDIC Failed Bank List", "Demographic Statistics By Zip Code")
+
+#Download the datasets and import them in the environment
+my_datasets <- get_many_gov_files(my_names, import = TRUE)
+```
+
+### Contributors
+
+-   [Lika Mikhelashvili](https://github.com/lmikhelashvili)
+
+-   [Vibha Gogu](https://github.com/vibhagogu)
+
+-   [Adriana Beltran Andrade](https://github.com/abeltranandrade)
+
+------------------------------------------------------------------------
+
+I think we should remove everything below
 
 ### Dependencies/Setup
 
@@ -93,7 +145,7 @@ currently supports only three file types: CSV, JSON, and XML.
 If the user enters any other file types, the function will put an error
 message and redirect the user to the website of the data.
 
-## Examples
+### Examples
 
 ``` r
 library(CodeGovern)
@@ -101,7 +153,7 @@ my_data1 <- get_gov_file("Electric Vehicle Population Data", "json")
 my_data2 <-get_gov_file("Lottery Powerball Winning Numbers Beginning 2010", "csv")
 ```
 
-## Phase III Package
+### Phase III Package
 
 In Phase III we will be working on the same package as in Phase II. Now,
 we have `get_gov_file` that downloads the data file. In the next phase,
