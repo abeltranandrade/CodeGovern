@@ -27,7 +27,7 @@ library(methods)
 #'
 #' #if you want file to locally import, delete import parameter, by default import = TRUE
 #' my_names <- c("FDIC Failed Bank List", "Demographic Statistics By Zip Code")
-#' GetDataGovFiles(my_names, import = TRUE)
+#' get_many_gov_files(my_names, import = TRUE)
 #' @import dplyr
 #' @import xml2
 #' @import rvest
@@ -41,7 +41,7 @@ library(methods)
 #' @importFrom readr "read_csv"
 
 
-GetDataGovFiles <- function(name_vector, import = TRUE){
+get_many_gov_files <- function(name_vector, import = TRUE){
   prefix <- "https://catalog.data.gov/dataset"
 
   output_list <- NULL #create an empty list
