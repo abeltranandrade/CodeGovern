@@ -2,7 +2,7 @@ Lika Mikhelashvili, Adriana Beltran Andrade, Vibha Gogu
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# CodeGovern
+# CodeGovern <img src="data-raw/sticker/hex_codegovern.png" align="right" height=140/>
 
 ### Purpose
 
@@ -31,6 +31,10 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 [![CRAN
 status](https://www.r-pkg.org/badges/version/CodeGovern)](https://CRAN.R-project.org/package=CodeGovern)
 <!-- badges: end -->
+
+## Purpose
+
+## Target Audience
 
 ## Installation
 
