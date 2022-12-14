@@ -77,6 +77,15 @@ my_names <- c("FDIC Failed Bank List", "Demographic Statistics By Zip Code")
 my_datasets <- get_many_gov_files(my_names, import = TRUE)
 ```
 
+
+### Contributors
+
+- [Lika Mikhelashvili](https://github.com/lmikhelashvili)
+
+- [Vibha Gogu](https://github.com/vibhagogu)
+
+- [Adriana Beltran Andrade](https://github.com/abeltranandrade)
+
 -------------------
 
 I think we should remove everything below
