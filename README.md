@@ -30,6 +30,7 @@ limited experience.
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/CodeGovern)](https://CRAN.R-project.org/package=CodeGovern)
+[![R-CMD-check](https://github.com/abeltranandrade/CodeGovern/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/abeltranandrade/CodeGovern/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 ### Installation
