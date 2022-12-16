@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# CodeGovern <img src="data-raw/hex_codegovern_US_colors.png" align="right" height=140/>
+# CodeGovern <img src="data-raw/hex_codegovern_US_colors-removebg-preview.png" align="right" height=140/>
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)

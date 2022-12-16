@@ -2,7 +2,7 @@ Lika Mikhelashvili, Adriana Beltran Andrade, Vibha Gogu
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# CodeGovern <img src="data-raw/hex_codegovern_US_colors.png" align="right" height=140/>
+# CodeGovern <img src="data-raw/hex_codegovern_US_colors-removebg-preview.png" align="right" height=140/>
 
 <!-- badges: start -->
 
