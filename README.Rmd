@@ -16,17 +16,17 @@ knitr::opts_chunk$set(
 
 # CodeGovern <img src="data-raw/hex_codegovern_US_colors.png" align="right" height=140/>
 
+<!-- badges: start -->
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![CRAN status](https://www.r-pkg.org/badges/version/CodeGovern)](https://CRAN.R-project.org/package=CodeGovern)
+[![R-CMD-check](https://github.com/abeltranandrade/CodeGovern/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/abeltranandrade/CodeGovern/actions/workflows/R-CMD-check.yaml)
+<!-- badges: end -->
 ### Purpose
 Code Govern is a package used to scrape, import, and download datasets and metadata from the website [Data.gov](https://data.gov/). This website is the federal government's open data site, and has over 298,424 datasets available to download in various export types (i.e., .csv, .xml, .json). Using **CodeGovern** functions, the data can be easily downloaded onto your computer, or for .csv files, return the data directly in RStudio. Our functions currently support CSV, JSON, and XML file types.  
 
 ### Target audience
 This package is intended for users who want to work with the open government data without having to repetitively download data and prefer not to work with the [Data.gov](https://data.gov/) interface. This package is also useful for those with domain knowledge who want to start working with data but want a more seamless experience given their limited experience.
 
-<!-- badges: start -->
-[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-[![CRAN status](https://www.r-pkg.org/badges/version/CodeGovern)](https://CRAN.R-project.org/package=CodeGovern)
-[![R-CMD-check](https://github.com/abeltranandrade/CodeGovern/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/abeltranandrade/CodeGovern/actions/workflows/R-CMD-check.yaml)
-<!-- badges: end -->
 
 ### Installation
 
