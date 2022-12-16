@@ -1,19 +1,15 @@
----
-title: "alert notification"
-author: "Vibha Gogu"
-date: "2022-11-29"
-output: html_document
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-```{r}
-name <- "Electric Vehicle Population Data"
-```
-
-```{r}
-prefix <- "https://catalog.data.gov/dataset"
+#' Alert user if data is Non-Federal
+#'
+#' @param name name of the data set
+#'
+#' @return A statement notifying whether the data is Federal or Non-Federal
+#' @export
+#'
+#' @examples
+#' federalalert("Electric Vehicle Population Data")
+#' federalalert("FDIC Failed Bank List")
+federalalert <- function(name) {
+  prefix <- "https://catalog.data.gov/dataset"
   #Specific name needs to be lowercase and with dashes between words
   specific <- tolower(name)
   specific <- gsub(" ", "-", specific)
@@ -26,15 +22,13 @@ prefix <- "https://catalog.data.gov/dataset"
       message("There was an error. The dataset was not found")
     }
   )
-  
   alert <- html%>%
     html_elements(".non-federal")
-  
+
   if(length(alert)==0) {
-    print("blah")
+    print("This a Federal dataset covered by Data.gov's Terms of Use")
   }else{
-    print("blahblah")
+    print("Alert: This is a Non-Federal dataset covered by different Terms of Use than Data.gov")
   }
-  
- 
-```
+
+}
