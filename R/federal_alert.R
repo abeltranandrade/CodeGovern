@@ -6,9 +6,9 @@
 #' @export
 #'
 #' @examples
-#' federalalert("Electric Vehicle Population Data")
-#' federalalert("FDIC Failed Bank List")
-federalalert <- function(name) {
+#' federal_alert("Electric Vehicle Population Data")
+#' federal_alert("FDIC Failed Bank List")
+federal_alert <- function(name) {
   prefix <- "https://catalog.data.gov/dataset"
   #Specific name needs to be lowercase and with dashes between words
   specific <- tolower(name)
