@@ -66,13 +66,13 @@ get_many_gov_files <- function(name_vector, import = TRUE){
     first <- ".//a[@data-format='"
     last <- "']"
     typeTogether <- paste0(first, "csv", last)
-    print(typeTogether)
+    #print(typeTogether)
 
     #https://stackoverflow.com/questions/45256789/get-value-from-xml-with-r-by-attribute
     #find the xml that is a link with data-format attribute of the type asked
     final <- xml_find_all(html, typeTogether)
     final <- html_attr(final, 'href')
-    print(final)
+    #print(final)
 
     name <- gsub(" ", "", name)
     filename <- str_c(name, ".", "csv")
