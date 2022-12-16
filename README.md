@@ -21,8 +21,10 @@ website is the federal government’s open data site, and has over 298,424
 datasets available to download in various export types (i.e., .csv,
 .xml, .json). Using **CodeGovern** functions, the data can be easily
 downloaded onto your computer, or for .csv files, return the data
-directly in RStudio. Our functions currently support CSV, JSON, and XML
-file types.
+directly in RStudio. The user can also view the list of available
+datasets and get an alert if the data is federal or non-federal. Our
+functions currently support the download of CSV, JSON, and XML file
+types.
 
 ### Target audience
 
@@ -72,6 +74,12 @@ Load `CodeGovern` R package:
 library(CodeGovern)
 ```
 
+1.  Download [Electric Vehicle Population
+    Data](https://catalog.data.gov/dataset/electric-vehicle-population-data)
+    in JSON format and [Lottery Powerball Winning Numbers Beginning
+    2010](https://catalog.data.gov/dataset/lottery-powerball-winning-numbers-beginning-2010)
+    in CSV format.
+
 ``` r
 #download the data set locally
 get_gov_file("Electric Vehicle Population Data", "json") 
@@ -80,6 +88,12 @@ get_gov_file("Electric Vehicle Population Data", "json")
 my_data2 <-get_gov_file("Lottery Powerball Winning Numbers Beginning 2010", "csv") 
 ```
 
+2.  Download [FDIC Failed Bank
+    List](https://catalog.data.gov/dataset/fdic-failed-bank-list) and
+    [Demographic Statistics By Zip
+    Code](https://catalog.data.gov/dataset/demographic-statistics-by-zip-code)
+    datasets in CSV format simultaneously.
+
 ``` r
 #Create a list of dataset names
 my_names <- c("FDIC Failed Bank List", "Demographic Statistics By Zip Code")
@@ -87,6 +101,8 @@ my_names <- c("FDIC Failed Bank List", "Demographic Statistics By Zip Code")
 #Download the datasets and import them in the environment
 my_datasets <- get_many_gov_files(my_names, import = TRUE)
 ```
+
+3.  
 
 ### Contributors
 
