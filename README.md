@@ -47,8 +47,8 @@ build panel.
 ### Functions Included
 
 The following functions allow the user to scrape and download data,
-**explore available datasets, and view data documentation (NEED TO
-CLARIFY THIS)**.
+explore available datasets on the website, and view if the data of
+interest is of federal or non-federal origin.
 
 -   `get_gov_file` downloads and imports a single dataset of type CVS,
     JSON, and XML
@@ -56,9 +56,10 @@ CLARIFY THIS)**.
 -   `get_many_gov_files` downloads multiple datasets of type CSV and
     returns a list of data frames
 
--   `name_crawler`
+-   `explore_datasets` gives the names of the datasets available on the
+    [Data.gov](https://data.gov/) website.
 
--   
+-   `federal_alert` alerts user if data is Non-Federal
 
 ### Usage
 
@@ -70,8 +71,6 @@ Load `CodeGovern` R package:
 ``` r
 library(CodeGovern)
 ```
-
-**DO WE NEED TO HAVE THE import=TRUE here?**
 
 ``` r
 #download the data set locally
@@ -96,71 +95,3 @@ my_datasets <- get_many_gov_files(my_names, import = TRUE)
 -   [Vibha Gogu](https://github.com/vibhagogu)
 
 -   [Adriana Beltran Andrade](https://github.com/abeltranandrade)
-
-------------------------------------------------------------------------
-
-I think we should remove everything below
-
-### Dependencies/Setup
-
-Need to load the following libraries:
-
-``` r
-library(rvest)
-library(stringr)
-library("htmltools")
-library("xml2")
-library(tidyverse)
-library(readr)
-library(rjson)
-```
-
-### Arguments
-
-`name` is the name of the dataset you want to download. The name should
-be a string and should be worded exactly as it appears on the data.gov
-website. Example, “Lottery Powerball Winning Numbers Beginning 2010”
-
-`type`: type of the data set. Must be a string. For example, “csv”,
-“json”, “xml”, etc.
-
-`import`: Boolean that decides if file should be imported locally. By
-default it is TRUE and will import locally. Used mostly for internal
-processes.
-
-### Result
-
-The function returns a downloaded data file that the user can assign to
-an object and import into the RStudio environment. The function
-currently supports only three file types: CSV, JSON, and XML.
-
--   CSV: the function will download the file locally and return a data
-    frame.
-
--   JSON: the function will download the file locally and return the raw
-    JSON file.
-
--   XML: the function will download the file locally.
-
-If the user enters any other file types, the function will put an error
-message and redirect the user to the website of the data.
-
-### Examples
-
-``` r
-library(CodeGovern)
-my_data1 <- get_gov_file("Electric Vehicle Population Data", "json")
-my_data2 <-get_gov_file("Lottery Powerball Winning Numbers Beginning 2010", "csv")
-```
-
-### Phase III Package
-
-In Phase III we will be working on the same package as in Phase II. Now,
-we have `get_gov_file` that downloads the data file. In the next phase,
-we would want to expand get_gov_file or create a sister function that is
-able to download multiple files in one function call through a vector
-argument. We will create a function that gives a catalog of the data
-sets on the [data.gov](http://www.data.gov) website through our function
-that will return the names. We will also work on a function that gives
-detailed information on the user’s data set of choice, e.g., the date
-published.
