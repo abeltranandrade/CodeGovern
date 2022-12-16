@@ -11,14 +11,18 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 [![CRAN
 status](https://www.r-pkg.org/badges/version/CodeGovern)](https://CRAN.R-project.org/package=CodeGovern)
 [![R-CMD-check](https://github.com/abeltranandrade/CodeGovern/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/abeltranandrade/CodeGovern/actions/workflows/R-CMD-check.yaml)
-<!-- badges: end --> \### Purpose Code Govern is a package used to
-scrape, import, and download datasets and metadata from the website
-[Data.gov](https://data.gov/). This website is the federal government’s
-open data site, and has over 298,424 datasets available to download in
-various export types (i.e., .csv, .xml, .json). Using **CodeGovern**
-functions, the data can be easily downloaded onto your computer, or for
-.csv files, return the data directly in RStudio. Our functions currently
-support CSV, JSON, and XML file types.
+<!-- badges: end -->
+
+### Purpose
+
+Code Govern is a package used to scrape, import, and download datasets
+and metadata from the website [Data.gov](https://data.gov/). This
+website is the federal government’s open data site, and has over 298,424
+datasets available to download in various export types (i.e., .csv,
+.xml, .json). Using **CodeGovern** functions, the data can be easily
+downloaded onto your computer, or for .csv files, return the data
+directly in RStudio. Our functions currently support CSV, JSON, and XML
+file types.
 
 ### Target audience
 
