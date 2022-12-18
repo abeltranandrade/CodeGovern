@@ -79,3 +79,41 @@ library(CodeGovern)
 federal_alert("Electric Vehicle Population Data")
 federal_alert("FDIC Failed Bank List")
 ```
+
+### `explore_datasets`
+
+#### Context
+explore_datasets function is meant to be used with get_gov_file or get_many_gov_files to allow users to have a larger set of datasets they could call upon and use quickly. Because of that we have to limit our dataset search as those functions can only aid in downloading csv and JSON. Hopefully in the future we will be able to expand. The function also returns names given their popularity ranking on the website the moment you run the function, therefore you may not always get the same datasets even when putting the same parameters. 
+
+#### Arguements 
+`entries` Integer number of dataset names to collect. It needs to be larger than 1.
+
+`format` Default is both JSON and CSV. Could select only one by "csv" or "json". Also included "all", which returns dataset of any format although it wont be compatible with get_gov_file. 
+
+`OrgType` Only the inputs named on ?explore_datasets are valid. If indifferent to a certain organization type, just disregard parameter. 
+
+#### Result
+
+The result is a vector of length `entries` with the names of the datasets given the arguments chosen on the call.
+
+#### Examples
+```{r eval = FALSE}
+library(CodeGovern)
+# 2 Parameters, 2 pages
+titles1 <- explore_datasets(25, format = "csv", OrgType = "Federal Government")
+
+# no parameters, 1 page scraped
+titles2 <- explore_datasets(10)
+
+# no parameters,2 pages scraped
+titles3 <- explore_datasets(30)
+
+# 1 parameter, 1 page scraped
+titles4 <- explore_datasets(10, format = "json")
+
+# 1 parameter, 2 pages scraped
+titles4 <- explore_datasets(30, OrgType = "University")
+
+# two pages scraped of all formats
+titles5 <- explore_datasets(30, format = "all")
+```
