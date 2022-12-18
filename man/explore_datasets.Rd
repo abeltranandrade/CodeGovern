@@ -22,5 +22,5 @@ datasets no matter what format it is.}
 a character vector with the names of datasets
 }
 \description{
-Returns to  users a desired amount of dataset names they could download. \n They can filter the datasets by format or Organization type. \n Meant to be used with get_gov_file function.
+Returns to  users a desired amount of dataset names they could download. They can filter the datasets by format or Organization type. Meant to be used with get_gov_file function.
 }
