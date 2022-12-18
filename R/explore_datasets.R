@@ -13,13 +13,16 @@ creatingFilteredURL <- function(startingPoint, topic = NA, format = NA, OrgType 
   filter_str <- c("res_format=","organization_type=")
   full_url <-""
 
+  # if all formats then don't specify a specific one
+  if(format == "all"){format <- NA}
+
   #formatting the URL with correct filters and connetors
-  if(format != "/?res_format=CSV&res_format=JSON"){
-    format <- toupper(format) # transformation Needed to be upper case in url
-    if(FirstParameter){full_url <- paste(startingPoint,"/", FPPrefix,filter_str[1], format, sep =""); FirstParameter <- FALSE}
-  }
-  else if(format != "all"){
-    if(FirstParameter){full_url <- paste(startingPoint, format, sep =""); FirstParameter <- FALSE}
+  if(!is.na(format)){ #if its not for all results
+    if(format != "/?res_format=CSV&res_format=JSON"){ # if its not default
+      format <- toupper(format) # transformation Needed to be upper case in url
+      full_url <- paste(startingPoint,"/", FPPrefix,filter_str[1], format, sep ="")
+      FirstParameter <- FALSE
+    }
   }
 
   if(!(is.na(OrgType))){
@@ -27,8 +30,8 @@ creatingFilteredURL <- function(startingPoint, topic = NA, format = NA, OrgType 
     if(FirstParameter){full_url <- paste(startingPoint, FPPrefix, filter_str[2], OrgType, sep =""); FirstParameter <- FALSE}
     else{full_url <- paste(full_url, NFPPrefix, filter_str[2], OrgType, sep ="")}
   }
-  cat("inside the nested function: ", full_url, "\n")
-  #might have to change this when I do the defaults
+
+  #if we have not created the full URL then its the base case (starting point)
   if(full_url == ""){full_url <- startingPoint}
   url_info <- list(full_url, FirstParameter)
   return(url_info)
@@ -45,7 +48,7 @@ creatingFilteredURL <- function(startingPoint, topic = NA, format = NA, OrgType 
 #' datasets no matter what format it is.
 #' @param OrgType What organization type published the data. Options are  "City Government", "State Government","Federal Government" , "County Government", "University"
 #'
-#' @return
+#' @return a character vector with the names of datasets
 #' @export
 #'
 #' @examples
@@ -54,25 +57,27 @@ explore_datasets <- function(entries, format = "/?res_format=CSV&res_format=JSON
   returnNames <- c()
   #Boolean to know if it has already used the base case
   baseCase <- TRUE
-  #This is the URL offset counter, satarts at 2 because we start using it on the second page we scrape
+  #This is the URL offset counter, starts at 2 because we start using it on the second page we scrape
   OffsetCounter <- 2
 
   #ensuring correct entries parameters
   if(entries < 1){
-    errorCondition("Entries wanted need to be at least 1")
+    stop("Entries wanted need to be at least 1")
   }
 
   # ensuring correct format parameter
-  if(format != "json" || format != "JSON" || format != "csv" || format != "CSV" ||
-     format != "/?res_format=CSV&res_format=JSON" || format != "all" ){
-    errorCondition("Invalid format parameter, please use ?explore_datasets for valid entries")
+  validFormats <- c("json", "JSON", "csv", "CSV","/?res_format=CSV&res_format=JSON", "all")
+  if(!(format %in% validFormats)){
+    stop("Invalid format parameter, please use ?explore_datasets for valid entries")
   }
 
+
   # ensuring correct format parameter
-  if(OrgType != "Federal Government" || OrgType != "City Government" || OrgType != "State Government"
-     || OrgType != "County Government" || OrgType != "University"){
-    errorCondition("Invalid Organization Type parameter, please use ?explore_datasets for valid entries")
-  }
+  validOrgType <- c("Federal Government","City Government" , "State Government", "County Government", "University" )
+  if(!is.na(OrgType)){
+    if(!(OrgType %in% validOrgType)){
+      stop("Invalid Organization Type parameter, please use ?explore_datasets for valid entries")
+    }}
 
   #Creating the URL and giving Information
   startingPoint <- "https://catalog.data.gov/dataset"
@@ -84,11 +89,6 @@ explore_datasets <- function(entries, format = "/?res_format=CSV&res_format=JSON
   full_url <- as.character(full_url)
   html <- read_html(full_url)
 
-#
-#   tryCatch(expr = html <- read_html(full_url),
-#            error = function(e){
-#              stop <- "Error on input related to non-required parameters. Compare parameters using ?explore_dataset command"
-#            } )
   # keep scraping titles if our list to return has less entries than what they asked for
   while(length(returnNames) < entries){
     #base case if this is the first page they scrape
@@ -109,28 +109,27 @@ explore_datasets <- function(entries, format = "/?res_format=CSV&res_format=JSON
 
       # creating the offset page URL and scraping the HTML
       newURL <- paste0(full_url,pre, as.character(OffsetCounter))
-      cat("the new URL is ", newURL, "\n")
       html <- read_html(newURL)
 
       #finding the link tags with the titles
       aTag <-html  %>% html_nodes('.dataset-heading') %>% html_nodes('a')
+      #If this new page does not have any entries, there are no more dataset names
       if(length(aTag) == 0){
         return(returnNames)
       }
-      # here we could divide if its used for the users or for internal testing
+      #add dataset names on new page to the return list
       names <- aTag %>% html_text()
       returnNames <- append(returnNames, names)
-      cat(" || and the amount of names are ", length(returnNames), "\n")
       OffsetCounter <- OffsetCounter + 1
+
     }
   }
   return(returnNames[0:entries])
 }
 
-Hehe <- explore_datasets(35)
 
 # 2 Parameters, 2 pages
-titles1 <- explore_datasets(35, format = "csv", OrgType = "Federal Government")
+titles1 <- explore_datasets(25, format = "csv", OrgType = "Federal Government")
 titles1
 length(titles1)
 
@@ -153,6 +152,19 @@ length(titles4)
 titles4 <- explore_datasets(30, OrgType = "University")
 titles4
 length(titles4)
+
+# trying all parameter
+titles5 <- explore_datasets(30, format = "all")
+titles5
+length(titles5)
+
+# error message
+titles6 <- explore_datasets(30, format = "hairstyle")
+
+# error message
+titles7 <- explore_datasets(30, OrgType  = "house")
+
+# need test for when second page or first page have no entries but that is not possible with the limited parameter options given as they all have lots of pages
 
 
 
