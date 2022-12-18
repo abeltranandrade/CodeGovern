@@ -24,5 +24,5 @@ library(CodeGovern)
 
 #if you want file to locally import, delete import parameter, by default import = TRUE
 my_names <- c("FDIC Failed Bank List", "Demographic Statistics By Zip Code")
-get_many_gov_files(my_names, import = TRUE)
+get_many_gov_files(my_names, import = FALSE)
 }
