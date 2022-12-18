@@ -6,7 +6,7 @@
 \usage{
 explore_datasets(
   entries,
-  format = "res_format=CSV&res_format=JSON",
+  format = "/?res_format=CSV&res_format=JSON",
   OrgType = NA
 )
 }
@@ -18,7 +18,9 @@ datasets no matter what format it is.}
 
 \item{OrgType}{What organization type published the data. Options are  "City Government", "State Government","Federal Government" , "County Government", "University"}
 }
+\value{
+a character vector with the names of datasets
+}
 \description{
-Will give the users their desired amount of dataset names they could download and they can filter the datasets by topic, format, Organization type or Organization
-publishing. For the available inputs check parameters.
+Returns to  users a desired amount of dataset names they could download. \n They can filter the datasets by format or Organization type. \n Meant to be used with get_gov_file function.
 }

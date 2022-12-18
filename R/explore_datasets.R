@@ -40,8 +40,7 @@ creatingFilteredURL <- function(startingPoint, topic = NA, format = NA, OrgType 
 
 #' Explore Datasets
 #'
-#' Will give the users their desired amount of dataset names they could download and they can filter the datasets by topic, format, Organization type or Organization
-#'publishing. For the available inputs check parameters.
+#' Returns to  users a desired amount of dataset names they could download. They can filter the datasets by format or Organization type. Meant to be used with get_gov_file function.
 #'
 #' @param entries the amount of data set names to return as an integer
 #' @param format What data format you want to download. Default you look for both csv and json, as that is what get_gov_file currently supports. You can use csv (only csv files)  or json (only json files). You can use parameter "all" to see all
