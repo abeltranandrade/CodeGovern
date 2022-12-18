@@ -63,3 +63,19 @@ library(CodeGovern)
 my_data1 <- get_gov_file("Electric Vehicle Population Data", "json")
 my_data2 <-get_gov_file("Lottery Powerball Winning Numbers Beginning 2010", "csv")
 ```
+
+### `federal_alert`
+
+#### Arguements 
+`name` is the name of the dataset you want to download. The name should be a string and should be worded exactly as it appears on the data.gov website. Example, "Lottery Powerball Winning Numbers Beginning 2010"
+
+#### Result
+
+The result is a string with either one of two messages: "This a Federal dataset covered by Data.gov's Terms of Use" or "Alert: This is a Non-Federal dataset covered by different Terms of Use than Data.gov". 
+
+#### Examples
+```{r eval = FALSE}
+library(CodeGovern)
+federal_alert("Electric Vehicle Population Data")
+federal_alert("FDIC Failed Bank List")
+```
