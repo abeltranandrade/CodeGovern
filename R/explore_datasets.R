@@ -51,6 +51,11 @@ creatingFilteredURL <- function(startingPoint, topic = NA, format = NA, OrgType 
 #' @export
 #'
 #' @examples
+#' library(CodeGovern)
+#' # 2 Parameters, 2 pages
+#' titles1 <- explore_datasets(25, format = "csv", OrgType = "Federal Government")
+#' # no parameters, 1 page scraped
+#' titles2 <- explore_datasets(10)
 explore_datasets <- function(entries, format = "/?res_format=CSV&res_format=JSON", OrgType = NA){
   # Bring in the  starting point html
   returnNames <- c()

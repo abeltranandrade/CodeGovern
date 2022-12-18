@@ -24,3 +24,10 @@ a character vector with the names of datasets
 \description{
 Returns to  users a desired amount of dataset names they could download. They can filter the datasets by format or Organization type. Meant to be used with get_gov_file function.
 }
+\examples{
+library(CodeGovern)
+# 2 Parameters, 2 pages
+titles1 <- explore_datasets(25, format = "csv", OrgType = "Federal Government")
+# no parameters, 1 page scraped
+titles2 <- explore_datasets(10)
+}
