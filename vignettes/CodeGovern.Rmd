@@ -1,0 +1,66 @@
+---
+title: "CodeGovern"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{CodeGovern}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(CodeGovern)
+```
+
+
+## Dependencies/Setup
+Need to load the following libraries:
+
+```{r}
+library(rvest)
+library(stringr)
+library("htmltools")
+library("xml2")
+library(tidyverse)
+library(readr)
+library(rjson)
+```
+
+
+### `get_gov_file`
+
+#### Arguments
+
+`name` is the name of the dataset you want to download. The name should be a string and should be worded exactly as it appears on the data.gov website. Example, "Lottery Powerball Winning Numbers Beginning 2010"
+
+`type`: type of the data set. Must be a string. For example, "csv", "json", "xml", etc. 
+
+`import`: Boolean that decides if file should be imported locally. By default it is TRUE and will import locally. Used mostly for internal processes. 
+
+
+#### Result
+The function returns a downloaded data file that the user can assign to an object and import into the RStudio environment. The function currently supports only three file types: CSV, JSON, and XML.
+
+- CSV: the function will download the file locally and return a data frame.
+
+- JSON: the function will download the file locally and return the raw JSON file.
+
+- XML: the function will download the file locally.
+
+If the user enters any other file types, the function will put an error message and redirect the user to the website of the data.
+
+test test test
+
+#### Examples
+
+```{r eval = FALSE}
+library(CodeGovern)
+my_data1 <- get_gov_file("Electric Vehicle Population Data", "json")
+my_data2 <-get_gov_file("Lottery Powerball Winning Numbers Beginning 2010", "csv")
+```
