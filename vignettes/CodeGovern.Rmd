@@ -82,11 +82,6 @@ head(my_list[[1]])
 head(my_list[[2]])
 ```
 
-```{r}
-my_names2 <- c("Fake Dataset Name", "FDIC Failed Bank List")
-get_many_gov_files(my_names2, import = TRUE)
-```
-
 
 ### `federal_alert`
 

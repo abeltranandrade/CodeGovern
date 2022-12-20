@@ -3,7 +3,7 @@ library(stringr)
 library("htmltools")
 library("xml2")
 library(tidyverse)
-library(readr, include.only = 'read_csv')
+library(readr, include.only = 'read_csv', "locale")
 #install.packages("rjson")
 library(rjson)
 library(XML)
@@ -27,7 +27,7 @@ library(methods)
 #'
 #' #if you want file to locally import, delete import parameter, by default import = TRUE
 #' my_names <- c("FDIC Failed Bank List", "Demographic Statistics By Zip Code")
-#' get_many_gov_files(my_names, import = TRUE)
+#' get_many_gov_files(my_names, import = FALSE)
 #' @import dplyr
 #' @import xml2
 #' @import rvest
@@ -38,7 +38,7 @@ library(methods)
 #' @import methods
 #' @import XML
 #' @importFrom utils "browseURL" "download.file"
-#' @importFrom readr "read_csv"
+#' @importFrom readr "read_csv" "locale"
 
 
 get_many_gov_files <- function(name_vector, import = TRUE){
