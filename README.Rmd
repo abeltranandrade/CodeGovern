@@ -85,7 +85,7 @@ head(my_datasets[[2]])
 
 3. View whether the data of interest is a federal or non-federal origin.
 
-```{r}
+```{r eval = TRUE}
 federal_alert("Electric Vehicle Population Data")
 ```
 
