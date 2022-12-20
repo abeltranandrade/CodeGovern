@@ -92,7 +92,7 @@ head(my_datasets[[2]])
 federal_alert("Electric Vehicle Population Data")
 ```
 
-4. View the available datasets to download. Use ?explore_datasets to learn more about the valid inputs for format and Organization Type.
+4. View the available datasets to download. Use `?explore_datasets` to learn more about the valid inputs for format and Organization Type.
 
 ```{r eval = TRUE}
 #returns the 10 most popular datasets available in csv and json currently

@@ -103,18 +103,20 @@ my_names <- c("FDIC Failed Bank List", "Demographic Statistics By Zip Code")
 
 #Download the datasets and import them in the environment
 my_datasets <- get_many_gov_files(my_names, import = TRUE)
+
+head(my_datasets[[1]])
+head(my_datasets[[2]])
 ```
 
 3.  View whether the data of interest is a federal or non-federal
     origin.
-
 
 ``` r
 federal_alert("Electric Vehicle Population Data")
 #> [1] "Alert: This is a Non-Federal dataset covered by different Terms of Use than Data.gov"
 ```
 
-4.  View the available datasets to download. Use ?explore_datasets to
+4.  View the available datasets to download. Use `?explore_datasets` to
     learn more about the valid inputs for format and Organization Type.
 
 ``` r
