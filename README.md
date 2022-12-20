@@ -61,7 +61,7 @@ interest is of federal or non-federal origin.
 -   `explore_datasets` gives the names of the datasets available on the
     [Data.gov](https://data.gov/) website.
 
--   `federal_alert` alerts user if data is Non-Federal
+-   `federal_alert` alerts user if dataset is Non-Federal.
 
 -   `Lottery2010` A popular dataset from data.com already available in
     the package.
@@ -107,6 +107,12 @@ my_datasets <- get_many_gov_files(my_names, import = TRUE)
 
 3.  View whether the data of interest is a federal or non-federal
     origin.
+
+
+``` r
+federal_alert("Electric Vehicle Population Data")
+#> [1] "Alert: This is a Non-Federal dataset covered by different Terms of Use than Data.gov"
+```
 
 4.  View the available datasets to download. Use ?explore_datasets to
     learn more about the valid inputs for format and Organization Type.

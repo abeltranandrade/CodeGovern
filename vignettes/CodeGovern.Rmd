@@ -64,3 +64,76 @@ library(CodeGovern)
 my_data1 <- get_gov_file("Electric Vehicle Population Data", "json")
 my_data2 <-get_gov_file("Lottery Powerball Winning Numbers Beginning 2010", "csv")
 ```
+
+### `get_many_gov_files`
+
+#### Arguments
+`name_vector` is the the names of the datasets you want to download. It is a vector of names as strings. For example, `c("Lottery Powerball Winning Numbers Beginning 2010", "Electric Vehicle Population Data")`
+
+#### Result
+
+The function returns a list of dataframes imported into the RStudio environment. The also locally downloads the CSV format files files. If the name of the dataset is entered incorrectly or the CSV format does not exist, the function outputs an error message and stops the function.
+
+#### Example
+
+```{r}
+my_names <- c("FDIC Failed Bank List", "Demographic Statistics By Zip Code")
+my_list <- get_many_gov_files(my_names, import = TRUE)
+head(my_list[[1]])
+head(my_list[[2]])
+```
+
+
+### `federal_alert`
+
+#### Arguements 
+`name` is the name of the dataset you want to download. The name should be a string and should be worded exactly as it appears on the data.gov website. Example, "Lottery Powerball Winning Numbers Beginning 2010"
+
+#### Result
+
+The result is a string with either one of two messages: "This a Federal dataset covered by Data.gov's Terms of Use" or "Alert: This is a Non-Federal dataset covered by different Terms of Use than Data.gov". 
+
+#### Examples
+```{r eval = FALSE}
+library(CodeGovern)
+federal_alert("Electric Vehicle Population Data")
+federal_alert("FDIC Failed Bank List")
+```
+
+### `explore_datasets`
+
+#### Context
+explore_datasets function is meant to be used with get_gov_file or get_many_gov_files to allow users to have a larger set of datasets they could call upon and use quickly. Because of that we have to limit our dataset search as those functions can only aid in downloading csv and JSON. Hopefully in the future we will be able to expand. The function also returns names given their popularity ranking on the website the moment you run the function, therefore you may not always get the same datasets even when putting the same parameters. 
+
+#### Arguements 
+`entries` Integer number of dataset names to collect. It needs to be larger than 1.
+
+`format` Default is both JSON and CSV. Could select only one by "csv" or "json". Also included "all", which returns dataset of any format although it wont be compatible with get_gov_file. 
+
+`OrgType` Only the inputs named on ?explore_datasets are valid. If indifferent to a certain organization type, just disregard parameter. 
+
+#### Result
+
+The result is a vector of length `entries` with the names of the datasets given the arguments chosen on the call.
+
+#### Examples
+```{r eval = FALSE}
+library(CodeGovern)
+# 2 Parameters, 2 pages
+titles1 <- explore_datasets(25, format = "csv", OrgType = "Federal Government")
+
+# no parameters, 1 page scraped
+titles2 <- explore_datasets(10)
+
+# no parameters,2 pages scraped
+titles3 <- explore_datasets(30)
+
+# 1 parameter, 1 page scraped
+titles4 <- explore_datasets(10, format = "json")
+
+# 1 parameter, 2 pages scraped
+titles4 <- explore_datasets(30, OrgType = "University")
+
+# two pages scraped of all formats
+titles5 <- explore_datasets(30, format = "all")
+```
