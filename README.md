@@ -46,7 +46,7 @@ devtools::install_github("abeltranandrade/CodeGovern")
 You can also clone the repository and install it through the Rstudio
 build panel.
 
-### Functions Included
+### Functions/Datasets Included
 
 The following functions allow the user to scrape and download data,
 explore available datasets on the website, and view if the data of
@@ -62,6 +62,9 @@ interest is of federal or non-federal origin.
     [Data.gov](https://data.gov/) website.
 
 -   `federal_alert` alerts user if data is Non-Federal
+
+-   `Lottery2010` A popular dataset from data.com already available in
+    the package.
 
 ### Usage
 
@@ -111,9 +114,42 @@ my_datasets <- get_many_gov_files(my_names, import = TRUE)
 ``` r
 #returns the 10 most popular datasets available in csv and json currently
 titles <- explore_datasets(10)
+titles
+#>  [1] "FDIC Failed Bank List"                                     
+#>  [2] "Electric Vehicle Population Data"                          
+#>  [3] "National Student Loan Data System"                         
+#>  [4] "Crime Data from 2020 to Present"                           
+#>  [5] "Dynamic Small Business Search (DSBS)"                      
+#>  [6] "Alzheimer's Disease and Healthy Aging Data"                
+#>  [7] "U.S. Chronic Disease Indicators (CDI)"                     
+#>  [8] "Demographic Statistics By Zip Code"                        
+#>  [9] "United States COVID-19 Cases and Deaths by State over Time"
+#> [10] "Lottery Powerball Winning Numbers: Beginning 2010"
 
-#returns the 25 most popular csv datasets from the Federal Government
-titles1 <- explore_datasets(25, format = "csv", OrgType = "Federal Government")
+#returns the 21 most popular csv datasets from the Federal Government
+titles1 <- explore_datasets(21, format = "csv", OrgType = "Federal Government")
+titles1
+#>  [1] "FDIC Failed Bank List"                                                                             
+#>  [2] "Alzheimer's Disease and Healthy Aging Data"                                                        
+#>  [3] "U.S. Chronic Disease Indicators (CDI)"                                                             
+#>  [4] "United States COVID-19 Cases and Deaths by State over Time"                                        
+#>  [5] "Consumer Complaint Database"                                                                       
+#>  [6] "Walkability Index"                                                                                 
+#>  [7] "Indicators of Anxiety or Depression Based on Reported Frequency of Symptoms During Last 7 Days"    
+#>  [8] "Drug overdose death rates, by drug type, sex, age, race, and Hispanic origin: United States"       
+#>  [9] "NCHS - Leading Causes of Death: United States"                                                     
+#> [10] "Mental Health Care in the Last 4 Weeks"                                                            
+#> [11] "Clean Air Status and Trends Network (CASTNET): Ozone"                                              
+#> [12] "Nutrition, Physical Activity, and Obesity - Behavioral Risk Factor Surveillance System"            
+#> [13] "FHFA House Price Indexes (HPIs)"                                                                   
+#> [14] "Conditions Contributing to COVID-19 Deaths, by State and Age, Provisional 2020-2022"               
+#> [15] "Death rates for suicide, by sex, race, Hispanic origin, and age: United States"                    
+#> [16] "Obesity among children and adolescents aged 2–19 years, by selected characteristics: United States"
+#> [17] "Heart Disease Mortality Data Among US Adults (35+) by State/Territory and County"                  
+#> [18] "COVID-19 Vaccination and Case Trends by Age Group, United States"                                  
+#> [19] "U.S. Electric Utility Companies and Rates: Look-up by Zipcode (2015)"                              
+#> [20] "Meteorite Landings"                                                                                
+#> [21] "Public School Characteristics 2019-20"
 ```
 
 ### Contributors

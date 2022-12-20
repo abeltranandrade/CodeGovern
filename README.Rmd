@@ -38,7 +38,7 @@ devtools::install_github("abeltranandrade/CodeGovern")
 ```
 You can also clone the repository and install it through the Rstudio build panel. 
 
-### Functions Included
+### Functions/Datasets Included
 
 The following functions allow the user to scrape and download data, explore available datasets on the website, and view if the data of interest is of federal or non-federal origin.
 
@@ -49,6 +49,9 @@ The following functions allow the user to scrape and download data, explore avai
 - `explore_datasets` gives the names of the datasets available on the [Data.gov](https://data.gov/) website.
 
 - `federal_alert` alerts user if data is Non-Federal
+
+- `Lottery2010` A popular dataset from data.com already available in the package.
+
 
 
 ### Usage
@@ -88,12 +91,14 @@ my_datasets <- get_many_gov_files(my_names, import = TRUE)
 
 4. View the available datasets to download. Use ?explore_datasets to learn more about the valid inputs for format and Organization Type.
 
-```{r}
+```{r eval = TRUE}
 #returns the 10 most popular datasets available in csv and json currently
 titles <- explore_datasets(10)
+titles
 
-#returns the 25 most popular csv datasets from the Federal Government
-titles1 <- explore_datasets(25, format = "csv", OrgType = "Federal Government")
+#returns the 21 most popular csv datasets from the Federal Government
+titles1 <- explore_datasets(21, format = "csv", OrgType = "Federal Government")
+titles1
 ```
 
 
