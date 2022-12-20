@@ -78,6 +78,9 @@ my_names <- c("FDIC Failed Bank List", "Demographic Statistics By Zip Code")
 
 #Download the datasets and import them in the environment
 my_datasets <- get_many_gov_files(my_names, import = TRUE)
+
+head(my_datasets[[1]])
+head(my_datasets[[2]])
 ```
 
 3. View whether the data of interest is a federal or non-federal origin.

@@ -64,6 +64,30 @@ my_data1 <- get_gov_file("Electric Vehicle Population Data", "json")
 my_data2 <-get_gov_file("Lottery Powerball Winning Numbers Beginning 2010", "csv")
 ```
 
+### `get_many_gov_files`
+
+#### Arguments
+`name_vector` is the the names of the datasets you want to download. It is a vector of names as strings. For example, `c("Lottery Powerball Winning Numbers Beginning 2010", "Electric Vehicle Population Data")`
+
+#### Result
+
+The function returns a list of dataframes imported into the RStudio environment. The also locally downloads the CSV format files files. If the name of the dataset is entered incorrectly or the CSV format does not exist, the function outputs an error message and stops the function.
+
+#### Example
+
+```{r}
+my_names <- c("FDIC Failed Bank List", "Demographic Statistics By Zip Code")
+my_list <- get_many_gov_files(my_names, import = TRUE)
+head(my_list[[1]])
+head(my_list[[2]])
+```
+
+```{r}
+my_names2 <- c("Fake Dataset Name", "FDIC Failed Bank List")
+get_many_gov_files(my_names2, import = TRUE)
+```
+
+
 ### `federal_alert`
 
 #### Arguements 

@@ -56,7 +56,7 @@ get_many_gov_files <- function(name_vector, import = TRUE){
     tryCatch(
       expr = {html <- read_html(full_url)},
       error = function(e){          # Specifying error message
-        message("There was an error. The dataset was not found")
+        stop("There was an error. A dataset was not found")
       }
     )
     #get HTML of the name given
