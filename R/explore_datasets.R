@@ -4,7 +4,7 @@ library(stringr)
 library(purrr)
 
 #should be over the other for running purposes but do not want it there
-# function to write the URLs
+# Internal function to write the URLs
 creatingFilteredURL <- function(startingPoint, topic = NA, format = NA, OrgType = NA){
   #Boolean to let us know if to use ? or & to join the parameters
   FirstParameter <- TRUE
@@ -76,7 +76,7 @@ explore_datasets <- function(entries, format = "/?res_format=CSV&res_format=JSON
   }
 
 
-  # ensuring correct format parameter
+  # ensuring correct Organization Type  parameter
   validOrgType <- c("Federal Government","City Government" , "State Government", "County Government", "University" )
   if(!is.na(OrgType)){
     if(!(OrgType %in% validOrgType)){
