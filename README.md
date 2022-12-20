@@ -105,12 +105,22 @@ my_datasets <- get_many_gov_files(my_names, import = TRUE)
 3.  View whether the data of interest is a federal or non-federal
     origin.
 
+
 ``` r
 federal_alert("Electric Vehicle Population Data")
 #> [1] "Alert: This is a Non-Federal dataset covered by different Terms of Use than Data.gov"
 ```
 
-4.  View the available datasets
+4.  View the available datasets to download. Use ?explore_datasets to
+    learn more about the valid inputs for format and Organization Type.
+
+``` r
+#returns the 10 most popular datasets available in csv and json currently
+titles <- explore_datasets(10)
+
+#returns the 25 most popular csv datasets from the Federal Government
+titles1 <- explore_datasets(25, format = "csv", OrgType = "Federal Government")
+```
 
 ### Contributors
 
