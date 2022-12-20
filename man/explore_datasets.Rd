@@ -28,6 +28,8 @@ Returns to  users a desired amount of dataset names they could download. They ca
 library(CodeGovern)
 # 2 Parameters, 2 pages
 titles1 <- explore_datasets(25, format = "csv", OrgType = "Federal Government")
+titles1
 # no parameters, 1 page scraped
 titles2 <- explore_datasets(10)
+titles2
 }
